@@ -86,7 +86,7 @@ a {
     height: 100vh;
     width: 300px;
     background: blueviolet;
-    left: 0px;
+    left: -305px;
     top: 0px;
     border: 1px solid black;
 }
@@ -97,3 +97,42 @@ a {
     margin: 10px;
 }
 
+.open {
+    display: flex;
+    position: fixed;
+    width: 288px;
+    top: 0;
+    left: 0;
+}
+
+.logout {
+    display: flex;
+    position: fixed;
+    width: 288px;
+    top: 0;
+    right: 0;
+}
+
+@keyframes friends-forward {
+    0% { left: -305px; }
+    100% { left: 0px; }
+}
+
+@keyframes friends-back {
+    0% { left: 0px; }
+    100% { left: -305px; }
+}
+
+.animation {
+    animation-name: friends-forward;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.animation2 {
+    animation-name: friends-back;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
