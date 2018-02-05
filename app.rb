@@ -100,6 +100,15 @@ class App < Sinatra::Base
 			session[:back] = "/website"
 			redirect('/error')
 		end
+		friends = db.execute("SELECT user2 FROM friends WHERE user1 IS (?)", [user1])
+		friends.each do |friend|
+			p friend
+			if friend[0] == user2
+				session[:error] = "Already friends"
+				session[:back] = "/website"
+				redirect('/error')
+			end
+		end
 		db.execute("INSERT INTO friends (user1, user2) VALUES (?,?)", [user1, user2])
 		db.execute("INSERT INTO friends (user2, user1) VALUES (?,?)", [user1, user2])
 		redirect('/website')
