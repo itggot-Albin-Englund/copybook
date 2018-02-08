@@ -117,7 +117,8 @@ class App < Sinatra::Base
 		redirect('/website')
 	end
 
-	post('/website') do
-		
+	post('/message') do
+		redirect('/website')
 	end
+
 end           

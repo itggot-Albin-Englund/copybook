@@ -136,3 +136,21 @@ a {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.none {
+    display: none;
+}
+
+.send {
+    display: flex;
+    flex-direction: row;
+
+}
+  
