@@ -93,12 +93,24 @@ class App < Sinatra::Base
 			session[:error] = "User can not be nil"
 			session[:back] = "/website"
 			redirect('/error')
+		elsif user1 == user2
+			session[:error] = "You can not add yourself"
+			session[:back] = "/website"
+			redirect('/error')
 		end
 		db = SQLite3::Database.new("./db/copybook.sqlite")
 		if db.execute("SELECT * FROM login WHERE username IS (?)", [user2]) == []
 			session[:error] = "User does not exist"
 			session[:back] = "/website"
 			redirect('/error')
+		end
+		friends = db.execute("SELECT user2 FROM friends WHERE user1 IS (?)", [user1])
+		friends.each do |friend|
+			if friend[0] == user2
+				session[:error] = "Already friends"
+				session[:back] = "/website"
+				redirect('/error')
+			end
 		end
 		db.execute("INSERT INTO friends (user1, user2) VALUES (?,?)", [user1, user2])
 		db.execute("INSERT INTO friends (user2, user1) VALUES (?,?)", [user1, user2])

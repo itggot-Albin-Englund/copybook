@@ -1,10 +1,9 @@
 <div class="notes"></div>
 <div class="container">
-    <div class="open" onclick="friendsOpen()">
-        <a href="">Friends</a>
-    </div>  
+    <a class="open" href="javaScript:void(0);" onclick="friendsOpen()">Friends</a> 
+    <a class="logout" href="/">Logout</a> 
     <div class="friends">
-        <a href="" onclick="friendsClose()">Close</a>
+        <a href="javaScript:void(0);" onclick="friendsClose()">Close</a>
         <div class="list">
             <% a.each do |friend| %>
                 <a href=""><%= friend[0] %></a>
